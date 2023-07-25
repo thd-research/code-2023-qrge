@@ -1,0 +1,39 @@
+seed: 1
+record_video: yes
+
+environment:
+  render: True
+# just testing commenting
+  num_envs: 100
+  eval_every_n: 200
+  num_threads: 30
+  simulation_dt: 0.0025
+  control_dt: 0.01
+  max_time: 4.0
+  action_std: 0.3
+  reward:
+    angularVelocityCost:
+      coeff: 1
+    linearVelocityCost:
+      coeff: 130
+    gaitGenerationCost:
+      coeff: 0.5
+    torqueCost:
+      coeff: -1e1
+    jointSpeedCost:
+      coeff: -1e1
+    ClearAndSlip:
+      coeff: -1e2
+    zAcceleration:
+      coeff: -1e-1
+    smoothnessCost:
+      coeff: -1e-1
+    airTimeCost:
+      coeff: 0.2
+    bodyOrientationCost:
+      coeff: -1e3
+    
+
+architecture:
+  policy_net: [512, 512]
+  value_net: [512, 512]
