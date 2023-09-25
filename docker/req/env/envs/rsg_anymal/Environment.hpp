@@ -293,18 +293,14 @@ double bodyOrientationCost(double& robot_height, double& pitch, double& roll, do
     double k_c = 0.1;
     double c_o = 0.4 * world_->getTimeStep();
 
-    // Инициализируем желаемую высоту робота
-    const double desired_height = gc_init_[2]; // Можно изменить на нужное значение
+    const double desired_height = gc_init_[2]; 
 
-    // Вычисляем ошибку высоты
     double height_error = std::abs(robot_height - desired_height);
 
-    // Вычисляем ошибки тангажа, крена и рысканья
     double pitch_error = std::abs(pitch);
     double roll_error = std::abs(roll);
     // double yaw_error = std::abs(yaw);
 
-    // Суммируем ошибки и возвращаем результат
     double total_error = height_error + pitch_error + roll_error;
     return exp(total_error) * k_c * c_o;
 }
